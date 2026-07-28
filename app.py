@@ -44,14 +44,22 @@ st.markdown("""
     }
 
     h1 {
-        font-size: 3.2rem !important;
+        font-size: 3.8rem !important;
         font-weight: 900 !important;
-        background: linear-gradient(135deg, #f7c948 0%, #ff6b35 50%, #ff4b4b 100%);
+        background: linear-gradient(135deg, #f7c948, #ff6b35, #ff4b4b, #f7c948);
+        background-size: 200% auto;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         text-shadow: none;
         letter-spacing: -0.03em;
+        animation: shine 3s linear infinite;
+    }
+
+    @keyframes shine {
+        to {
+            background-position: 200% center;
+        }
     }
 
     h2 {
@@ -129,23 +137,27 @@ st.markdown("""
     }
 
     .sidebar-title {
-        font-size: 1.8rem !important;
+        font-size: 2.2rem !important;
         font-weight: 900 !important;
-        background: linear-gradient(135deg, #f7c948, #ff4b4b);
+        background: linear-gradient(135deg, #f7c948 0%, #ff6b35 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         letter-spacing: -0.02em;
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 0.2rem !important;
+        text-align: center;
     }
 
     .sidebar-subtitle {
-        color: rgba(255,255,255,0.4) !important;
-        font-size: 0.75rem !important;
-        font-weight: 400 !important;
-        letter-spacing: 0.1em;
+        color: rgba(255,255,255,0.7) !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
         margin-bottom: 2rem !important;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 1rem;
     }
 
     .stButton > button {
@@ -539,14 +551,22 @@ st.markdown("""
     }
 
     h1 {
-        font-size: 3.2rem !important;
+        font-size: 3.8rem !important;
         font-weight: 900 !important;
-        background: linear-gradient(135deg, #f7c948 0%, #ff6b35 50%, #ff4b4b 100%);
+        background: linear-gradient(135deg, #f7c948, #ff6b35, #ff4b4b, #f7c948);
+        background-size: 200% auto;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         text-shadow: none;
         letter-spacing: -0.03em;
+        animation: shine 3s linear infinite;
+    }
+
+    @keyframes shine {
+        to {
+            background-position: 200% center;
+        }
     }
 
     h2 {
@@ -624,23 +644,27 @@ st.markdown("""
     }
 
     .sidebar-title {
-        font-size: 1.8rem !important;
+        font-size: 2.2rem !important;
         font-weight: 900 !important;
-        background: linear-gradient(135deg, #f7c948, #ff4b4b);
+        background: linear-gradient(135deg, #f7c948 0%, #ff6b35 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         letter-spacing: -0.02em;
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 0.2rem !important;
+        text-align: center;
     }
 
     .sidebar-subtitle {
-        color: rgba(255,255,255,0.4) !important;
-        font-size: 0.75rem !important;
-        font-weight: 400 !important;
-        letter-spacing: 0.1em;
+        color: rgba(255,255,255,0.7) !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
         margin-bottom: 2rem !important;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 1rem;
     }
 
     .stButton > button {
@@ -721,7 +745,7 @@ with tab1:
     labels = ['❌ Fail' if val == 0 else '✅ Success' for val in success_counts.index]
     colors = ['#ff4b4b' if val == 0 else '#4ecdc4' for val in success_counts.index]
 
-    fig_pie, ax_pie = plt.subplots(figsize=(1, 1))
+    fig_pie, ax_pie = plt.subplots(figsize=(4, 4))
     fig_pie.patch.set_facecolor('none')
     ax_pie.set_facecolor('none')
 
@@ -731,14 +755,15 @@ with tab1:
         colors=colors,
         autopct='%1.1f%%',
         startangle=90,
-        textprops={'color': 'black', 'fontsize': 6, 'weight': 'bold'},
+        textprops={'color': 'white', 'fontsize': 10, 'weight': 'bold'},
         wedgeprops={'edgecolor': 'none'}
     )
     ax_pie.axis('equal')
 
-    
-
-    st.pyplot(fig_pie)
+    # Center the pie chart
+    pc1, pc2, pc3 = st.columns([1, 2, 1])
+    with pc2:
+        st.pyplot(fig_pie, use_container_width=True)
     st.markdown("---")
 
     # Row 1: Budget vs Revenue + Genre Distribution
